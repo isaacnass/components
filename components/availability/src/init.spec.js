@@ -1,7 +1,11 @@
 describe("availability component", () => {
   beforeEach(() => {
     cy.visit("/components/availability/src/index.html");
-    cy.get("nylas-availability").should("exist");
+    cy.get("nylas-availability")
+      .then((element) => {
+        element.participants = ["nylascypresstest@gmail.com"];
+      })
+      .should("exist");
   });
 
   describe("available times", () => {
